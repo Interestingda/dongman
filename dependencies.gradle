@@ -1,0 +1,7 @@
+ext.versions=[
+        springboot:'2.3.7.RELEASE',
+]
+ext.libraries=[
+        //以下是springboot的项目所需的核心依赖
+        'spring-boot-gradle-plugin': "org.springframework.boot:spring-boot-gradle-plugin:${versions.springboot}",
+]
