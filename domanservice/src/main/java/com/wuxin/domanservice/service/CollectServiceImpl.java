@@ -79,7 +79,7 @@ public class CollectServiceImpl implements CollectService {
             id.add(collect.getVodId());
         }
         List<Video> videos = videoMapper.selectBatchIds(id);
-      return Result.success(copylist(videos));
+      return Result.success(copyList(videos));
         }
       return  Result.fail(200,"不存在收藏或者系统错误");
     }
@@ -87,7 +87,7 @@ public class CollectServiceImpl implements CollectService {
     /**
      * 返回视频vo类
      */
-    public List<VideoPVo> copylist(List<Video> L) {
+    public List<VideoPVo> copyList(List<Video> L) {
         List<VideoPVo> result = new ArrayList<>();
         try{
             for (Video v : L) {
