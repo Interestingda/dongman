@@ -22,7 +22,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/16
  */
 @Configuration
@@ -32,16 +32,14 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         // 拦截器。匹配原则是最上面的最优先匹配
-        Map<String,String> filterChainDefinitionMap = new LinkedHashMap<>();
+        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         // 配置不会被拦截的链接
-        filterChainDefinitionMap.put("/apis/auth/login","anon");
+        filterChainDefinitionMap.put("/apis/auth/login", "anon");
         filterChainDefinitionMap.put("/apis/vod_list", "anon");
-        filterChainDefinitionMap.put("/apis/auth/register","anon");
-      filterChainDefinitionMap.put("/apis/vod_detail","anon");
-//      filterChainDefinitionMap.put("/apis/show/comment/**","anon");
-              // 配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
+        filterChainDefinitionMap.put("/apis/auth/register", "anon");
+        filterChainDefinitionMap.put("/apis/vod_detail", "anon");
+        // 配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/Logout", "logout");
-
         // 剩余请求需要身份认证
         filterChainDefinitionMap.put("/**", "authc");
         // 如果不设置默认会根目录下的"/login"页面
@@ -52,29 +50,27 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
+
     //创建realm对象
     @Bean(name = "myShiroRealm")
     public ShiroRealm myShiroRealm(HashedCredentialsMatcher matcher) {
         ShiroRealm myShiroRealm = new ShiroRealm();
         myShiroRealm.setCredentialsMatcher(matcher);
-       myShiroRealm.setCacheManager(new EhCacheManager());
-       myShiroRealm.setCachingEnabled(true);//开启缓存
-       myShiroRealm.setAuthenticationCachingEnabled(true);//开启认证缓存
-       myShiroRealm.setAuthenticationCacheName("authentication");
-       return myShiroRealm;
+        myShiroRealm.setCacheManager(new EhCacheManager());
+        myShiroRealm.setCachingEnabled(true);//开启缓存
+        myShiroRealm.setAuthenticationCachingEnabled(true);//开启认证缓存
+        myShiroRealm.setAuthenticationCacheName("authentication");
+        return myShiroRealm;
     }
 
     /**
      * ‘进行安全管器的创建并把realm交给管理器
-     *
-     *
-     *
      */
     @Bean
     public DefaultWebSecurityManager securityManager(@Qualifier("hashedCredentialsMatcher") HashedCredentialsMatcher matcher,
                                                      CookieRememberMeManager rememberMeManager,
-                                                     SessionManager sessionManager){
-        DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
+                                                     SessionManager sessionManager) {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(myShiroRealm(matcher));
         //设置缓存
         securityManager.setCacheManager(new EhCacheManager());
@@ -87,11 +83,9 @@ public class ShiroConfig {
     }
 
 
-
     /**
      * 密码匹配凭证管理器
-     *  根据这个进行密码的比较
-     *
+     * 根据这个进行密码的比较
      */
     @Bean(name = "hashedCredentialsMatcher")
     public HashedCredentialsMatcher hashedCredentialsMatcher() {
@@ -105,7 +99,6 @@ public class ShiroConfig {
 
     /**
      * 设置缓存
-     *
      */
     @Bean
     public EhCacheManager cacheManager() {
@@ -114,8 +107,12 @@ public class ShiroConfig {
         return cacheManager;
     }
 
+    /**
+     *  会话管理器
+     *
+     */
     @Bean("sessionManager")
-    public SessionManager sessionManager(){
+    public SessionManager sessionManager() {
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
         //设置session过期时间
         sessionManager.setGlobalSessionTimeout(60 * 60 * 1000);
@@ -153,7 +150,6 @@ public class ShiroConfig {
         simpleCookie.setMaxAge(2 * 24 * 60 * 60);//2天
         return simpleCookie;
     }
-
 
 
 }

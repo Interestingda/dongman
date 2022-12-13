@@ -1,4 +1,4 @@
-package com.wuxin.core.service.impl;
+package com.wuxin.domanservice.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.wuxin.common.domain.Comment;
@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/11/2
  */
 @Service
@@ -41,7 +41,7 @@ public class CommentServiceImpl implements CommentService {
         processVO(comment, commentParam);
         comment.setParentId(0L);
         comment.setLevel(1);
-        comment.setVodId(Long.valueOf(id));
+        comment.setVodId(id);
         comment.setToUid(0L);
         commentMapper.insert(comment);
         return Result.success(200, "评论成功");
@@ -61,6 +61,12 @@ public class CommentServiceImpl implements CommentService {
     }
 
 
+    /**
+     *
+     * @param id  传入用户id
+     * @param commentParam
+     *
+     */
     @Override
     public Result reply(Long id, CommentParam commentParam) {
 //        processVO(comment, commentParam);

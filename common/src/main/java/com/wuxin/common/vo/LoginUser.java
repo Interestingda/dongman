@@ -3,7 +3,7 @@ package com.wuxin.common.vo;
 import lombok.Data;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/15
  */
 @Data

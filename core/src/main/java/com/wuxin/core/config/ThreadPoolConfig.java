@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/22
  */
 @Configuration
@@ -18,9 +18,7 @@ import java.util.concurrent.Executors;
 public class ThreadPoolConfig {
     @Bean("task")
     public Executor asyncServiceExecutor(){
-        //
-
-
+        //创建线程池
         return  Executors.newFixedThreadPool(20);
 
     }

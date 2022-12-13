@@ -11,8 +11,9 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/22
+ * 对jackson进行相关配置
  */
 @Configuration
 public class JacksonConfig {
