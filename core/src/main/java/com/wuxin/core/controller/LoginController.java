@@ -1,13 +1,12 @@
-package com.wuxin.domanservice.controller;
+package com.wuxin.core.controller;
 
 
 import com.wuxin.common.utils.Result;
 import com.wuxin.common.vo.LoginUser;
-import com.wuxin.domanservice.service.UserLoginImpl;
+import com.wuxin.core.service.impl.UserLoginImpl;
 
 
-import com.wuxin.domanservice.utils.PChoUtils;
-import com.wuxin.domanservice.utils.UpdateUtils;
+import com.wuxin.core.utils.UpdateUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

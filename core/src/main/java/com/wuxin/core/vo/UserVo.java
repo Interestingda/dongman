@@ -1,9 +1,8 @@
-package com.wuxin.domanservice.vo;
+package com.wuxin.core.vo;
 
 import lombok.Data;
 
 /**
- * Atothor:aa
  * data:2022/11/1
  */
 @Data

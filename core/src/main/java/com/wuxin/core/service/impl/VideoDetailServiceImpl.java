@@ -1,4 +1,4 @@
-package com.wuxin.core.service;
+package com.wuxin.core.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wuxin.common.api.VideoDetailService;
@@ -20,30 +20,31 @@ import java.util.*;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class VideoDetailServiceImpl  implements VideoDetailService {
+public class VideoDetailServiceImpl implements VideoDetailService {
     private final VideoDetailMapper videoDetailMapper;
+
     @Override
     public Result detail(Long id) {
-        if(Objects.isNull(id)){
+        if (Objects.isNull(id)) {
             System.out.println(id);
-            return Result.fail(400,"id为空");
+            return Result.fail(400, "id为空");
         }
         VideoDetail videoDetail = videoDetailMapper.selectById(id);
-        if (!Objects.isNull(videoDetail)){
-           String detail= videoDetail.getDetailInfo();
+        if (!Objects.isNull(videoDetail)) {
+            String detail = videoDetail.getDetailInfo();
             System.out.println(detail);
             JSONObject parse = JSONObject.parseObject(detail);
             String playurl = parse.getString("vod_play_url");
 
             String[] sp = playurl.split("#");
-            Map<String,String> map=new LinkedHashMap<>();
-            for (String s:sp){
+            Map<String, String> map = new LinkedHashMap<>();
+            for (String s : sp) {
                 String[] spl = s.split("\\$");
-                map.put(spl[0],spl[1]);
+                map.put(spl[0], spl[1]);
             }
-            parse.put("vod_play_url",map);
+            parse.put("vod_play_url", map);
             return Result.success(parse);
         }
-        return Result.fail(400,"数据不存在");
+        return Result.fail(400, "数据不存在");
     }
 }

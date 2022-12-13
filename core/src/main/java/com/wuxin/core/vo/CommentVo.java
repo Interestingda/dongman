@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.vo;
+package com.wuxin.core.vo;
 
 import lombok.Data;
 

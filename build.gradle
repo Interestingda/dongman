@@ -113,7 +113,7 @@ project("common"){
         api(libraries.'fastjson')
     }
 }
-project("domanservice"){
+project("core"){
 
     dependencies {
        implementation  (project(":common"))

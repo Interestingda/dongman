@@ -1,4 +1,4 @@
-package com.wuxin.domanservice;
+package com.wuxin.core;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

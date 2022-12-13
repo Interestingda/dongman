@@ -1,3 +1,5 @@
 rootProject.name = 'dongman'
 include('common')
-include('domanservice')
+include('core')
+include 'user'
+

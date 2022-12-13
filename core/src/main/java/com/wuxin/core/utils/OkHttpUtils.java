@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.utils;
+package com.wuxin.core.utils;
 
 import okhttp3.*;
 import org.springframework.stereotype.Component;

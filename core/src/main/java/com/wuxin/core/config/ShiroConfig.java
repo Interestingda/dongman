@@ -1,6 +1,6 @@
-package com.wuxin.domanservice.config;
+package com.wuxin.core.config;
 
-import com.wuxin.domanservice.utils.ShiroRealm;
+import com.wuxin.core.utils.ShiroRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 
 

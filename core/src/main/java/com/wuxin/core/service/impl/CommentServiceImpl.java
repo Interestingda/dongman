@@ -1,4 +1,4 @@
-package com.wuxin.core.service;
+package com.wuxin.core.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.wuxin.common.domain.Comment;
@@ -6,7 +6,7 @@ import com.wuxin.common.domain.User;
 import com.wuxin.common.domain.mapper.CommentMapper;
 import com.wuxin.common.domain.mapper.UserMapper;
 import com.wuxin.common.utils.Result;
-import com.wuxin.core.api.CommentService;
+import com.wuxin.core.service.CommentService;
 import com.wuxin.core.vo.CommentParam;
 import com.wuxin.core.vo.CommentVo;
 import com.wuxin.core.vo.UserVo;
@@ -28,7 +28,7 @@ import java.util.Map;
  */
 @Service
 @RequiredArgsConstructor
-public class CommentServiceimpl implements CommentService {
+public class CommentServiceImpl implements CommentService {
     private final CommentMapper commentMapper;
     private final UserMapper userMapper;
 
@@ -38,12 +38,7 @@ public class CommentServiceimpl implements CommentService {
     @Override
     public Result publish(Long id, CommentParam commentParam) {
         Comment comment = new Comment();
-        Subject subject = SecurityUtils.getSubject();
-        Map<String, Object> principal = (Map<String, Object>) subject.getPrincipal();
-        comment.setUserId(Long.valueOf(principal.get("id").toString()));
-        comment.setBody(commentParam.getBody());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        comment.setCreateDate(dateFormat.format(new Date()));
+        processVO(comment, commentParam);
         comment.setParentId(0L);
         comment.setLevel(1);
         comment.setVodId(Long.valueOf(id));
@@ -55,42 +50,33 @@ public class CommentServiceimpl implements CommentService {
     /**
      * 实现评论的展示功能
      */
-
-
     @Override
     public Result show(Long id) {
         LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Comment::getVodId,id);
+        queryWrapper.eq(Comment::getVodId, id);
         queryWrapper.eq(Comment::getLevel, 1);
         List<Comment> list = commentMapper.selectList(queryWrapper);
-
         return Result.success(copyList(list));
-
 
     }
 
+
     @Override
     public Result reply(Long id, CommentParam commentParam) {
-        Comment comment = new Comment();
-        Subject subject = SecurityUtils.getSubject();
-        Map<String, Object> principal = (Map<String, Object>) subject.getPrincipal();
-        comment.setUserId(Long.valueOf(principal.get("id").toString()));
-        comment.setBody(commentParam.getBody());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        comment.setCreateDate(dateFormat.format(new Date()));
-        Comment comment1 = commentMapper.selectById(id);
-        if (comment1.getParentId()==0){
-        comment.setParentId(comment1.getId());
+//        processVO(comment, commentParam);
+        Comment comment = commentMapper.selectById(id);
+
+        if (comment.getParentId() == 0) {
+            comment.setParentId(comment.getId());
         }
-        if (comment1.getParentId()!=0){
-            comment.setParentId(comment1.getParentId());
+        if (comment.getParentId() != 0) {
+            comment.setParentId(comment.getParentId());
         }
         comment.setLevel(2);
         comment.setVodId(0L);
-
-        comment.setToUid(comment1.getUserId());
+        comment.setToUid(comment.getUserId());
         commentMapper.insert(comment);
-        return Result.success(200,"回复成功");
+        return Result.success(200, "回复成功");
     }
 
     /**
@@ -116,7 +102,7 @@ public class CommentServiceimpl implements CommentService {
         commentVo.setBody(comment.getBody());
         commentVo.setAuthor(copyUser(comment.getUserId()));
         //如果是第一层就将第一层评论的id作为参数进行查询第二层相关信息
-        if (1==comment.getLevel()) {
+        if (1 == comment.getLevel()) {
             List<CommentVo> commentVoList = findByParentId(comment.getId());
             if (CollectionUtils.isEmpty(commentVoList)) {
                 commentVo.setReply_list(null);
@@ -124,7 +110,7 @@ public class CommentServiceimpl implements CommentService {
             commentVo.setReply_list(commentVoList);
 
         }
-        if (comment.getLevel()>1) {
+        if (comment.getLevel() > 1) {
             commentVo.setReply_user_name(copyUser(comment.getToUid()).getName());
 
         }
@@ -139,7 +125,7 @@ public class CommentServiceimpl implements CommentService {
      */
     public List<CommentVo> findByParentId(Long id) {
         LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Comment::getParentId,id);
+        queryWrapper.eq(Comment::getParentId, id);
         queryWrapper.eq(Comment::getLevel, 2);
         List<Comment> list = commentMapper.selectList(queryWrapper);
         return copyList(list);
@@ -159,6 +145,17 @@ public class CommentServiceimpl implements CommentService {
         return null;
     }
 
-
-
+    /**
+     * 处理实体基本信息
+     * @param comment entity
+     * @param param 映射参数
+     */
+    private void processVO(Comment comment, CommentParam param) {
+        Subject subject = SecurityUtils.getSubject();
+        Map<String, Object> principal = (Map<String, Object>) subject.getPrincipal();
+        comment.setUserId(Long.valueOf(principal.get("id").toString()));
+        comment.setBody(param.getBody());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        comment.setCreateDate(dateFormat.format(new Date()));
+    }
 }

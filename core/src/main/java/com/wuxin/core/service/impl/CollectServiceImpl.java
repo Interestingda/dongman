@@ -26,7 +26,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CollectServiceImpl implements CollectService {
+
     private final CollectMapper collectMapper;
+
     private final VideoMapper videoMapper;
 
     //添加收藏

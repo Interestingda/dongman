@@ -8,13 +8,13 @@
 
     <insert id="saveVideo" >
     insert into t_video(type_id,
-    type_name,
-    vod_en,
-    vod_id,
-    vod_name,
-    vod_play_from,
-    vod_remarks,
-    vod_time
+        type_name,
+        vod_en,
+        vod_id,
+        vod_name,
+        vod_play_from,
+        vod_remarks,
+        vod_time
     )values
     <foreach collection="list" item="item" separator="," >
 

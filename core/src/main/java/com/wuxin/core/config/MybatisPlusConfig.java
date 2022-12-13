@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.config;
+package com.wuxin.core.config;
 
 
 import com.baomidou.mybatisplus.annotation.DbType;

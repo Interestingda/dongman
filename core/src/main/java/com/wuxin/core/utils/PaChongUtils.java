@@ -37,48 +37,45 @@ public class PaChongUtils {
     private final HttpsUtils httpsUtils;
 
     private final VideoMapper videoMapper;
+
     @Async("task")
-     public void ss(int p,int number){
-        int pg=p;
-        String tName=Thread.currentThread().getName();
+    public void ss(int p, int number) {
+        int pg = p;
+        String tName = Thread.currentThread().getName();
 
-    while(pg<=number){
-        String data= null;
-        try {
-            data = httpsUtils.getResponse(pg);
-            if (null !=data && !data.isEmpty()){
-                pg++;
+        while (pg <= number) {
+            String data = null;
+            try {
+                data = httpsUtils.getResponse(pg);
+                if (null != data && !data.isEmpty()) {
+                    pg++;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-      JSONObject jsonObject = JSONObject.parseObject(data);		//将数据转换为JSON对象
-        if (!CollectionUtils.isEmpty(jsonObject)) {
-            String list = jsonObject.getString("list");
-            System.out.println(pg+ "调用的线程名字："+tName);
+            JSONObject jsonObject = JSONObject.parseObject(data);        //将数据转换为JSON对象
+            if (!CollectionUtils.isEmpty(jsonObject)) {
+                String list = jsonObject.getString("list");
+                System.out.println(pg + "调用的线程名字：" + tName);
 //            TLSv1.1,TLSv1.2
-            List<Video> list1=JSONArray.parseArray(list,Video.class);
+                List<Video> list1 = JSONArray.parseArray(list, Video.class);
 
 
-              try {
-                  videoMapper.saveVideo(list1);
-              }catch (Exception ignored){}
+                try {
+                    videoMapper.saveVideo(list1);
+                } catch (Exception ignored) {
+                }
 
 
-
-
-
-
-
-        }
-
+            }
 
 
 //        JSONObject res = JSONObject.parseObject(jsonObject.getString("list"));
 //        System.out.println(res);
 
+        }
     }
-}}
+}
 
 
 

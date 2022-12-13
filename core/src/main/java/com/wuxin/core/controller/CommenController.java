@@ -1,15 +1,13 @@
-package com.wuxin.domanservice.controller;
+package com.wuxin.core.controller;
 
 import com.wuxin.common.utils.Result;
-import com.wuxin.domanservice.api.CommentService;
-import com.wuxin.domanservice.vo.CommentParam;
+import com.wuxin.core.service.CommentService;
+import com.wuxin.core.vo.CommentParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.websocket.server.PathParam;
 
 /**
  * Atothor:aa

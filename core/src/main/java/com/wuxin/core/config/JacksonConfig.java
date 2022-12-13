@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.config;
+package com.wuxin.core.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.MapperFeature;

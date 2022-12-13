@@ -1,7 +1,6 @@
-package com.wuxin.domanservice.utils;
+package com.wuxin.core.utils;
 
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.wuxin.common.domain.Video;
 import com.wuxin.common.domain.VideoDetail;
@@ -9,8 +8,6 @@ import com.wuxin.common.domain.mapper.VideoDetailMapper;
 import com.wuxin.common.domain.mapper.VideoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.WebDataBinder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,19 +19,22 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class UpdateUtils {
+
     private final VideoDetailMapper videoDetailMapper;
+
     private final VideoMapper videoMapper;
-    public void w(){
-        List<Video> videos=new ArrayList<>();
-        LambdaQueryWrapper<VideoDetail> wrapper=new LambdaQueryWrapper<>();
+
+    public void w() {
+        List<Video> videos = new ArrayList<>();
+        LambdaQueryWrapper<VideoDetail> wrapper = new LambdaQueryWrapper<>();
         wrapper.select(VideoDetail::getDetailInfo);
         List<VideoDetail> videoDetails = videoDetailMapper.selectList(wrapper);
-        for (VideoDetail videoDetail:videoDetails){
+        for (VideoDetail videoDetail : videoDetails) {
             try {
-                Video video=new Video();
-                String l=videoDetail.getDetailInfo();
+                Video video = new Video();
+                String l = videoDetail.getDetailInfo();
 
-                    JSONObject parse = JSONObject.parseObject(l);
+                JSONObject parse = JSONObject.parseObject(l);
 
 
                 video.setVod_id(Long.valueOf(parse.getString("vod_id")));
@@ -44,7 +44,8 @@ public class UpdateUtils {
                 video.setVod_pic(parse.getString("vod_pic"));
                 videoMapper.updateById(video);
                 videos.add(video);
-            }catch (Exception ignored){}
+            } catch (Exception ignored) {
+            }
 
         }
 

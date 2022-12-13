@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.utils;
+package com.wuxin.core.utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -13,8 +13,6 @@ import org.springframework.util.CollectionUtils;
 import java.io.IOException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 

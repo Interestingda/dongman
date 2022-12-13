@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.controller;
+package com.wuxin.core.controller;
 
 import com.wuxin.common.api.VideoDetailService;
 import com.wuxin.common.api.VideoService;

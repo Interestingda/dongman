@@ -1,4 +1,4 @@
-package com.wuxin.core.service;
+package com.wuxin.core.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.wuxin.common.api.UserService;
@@ -21,24 +21,23 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-  private final UserMapper userMapper;
+    private final UserMapper userMapper;
 
     @Override
     public Map<String, Object> queryInfoByUsername(String username) {
 
         LambdaQueryWrapper<User> aa = new LambdaQueryWrapper<>();
 
-        aa.select(User::getId,User::getUserName,User::getPassword,User::getSalt);
+        aa.select(User::getId, User::getUserName, User::getPassword, User::getSalt);
         aa.eq(User::getUserName, username);
 
         List<Map<String, Object>> collect = userMapper.selectMaps(aa);
 
-        if(CollectionUtils.isEmpty(collect)){
-                return null;
-            }
+        if (CollectionUtils.isEmpty(collect)) {
+            return null;
+        }
         return collect.get(0);
     }
-
 
 
 }
