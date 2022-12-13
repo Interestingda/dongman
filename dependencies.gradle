@@ -1,7 +1,30 @@
 ext.versions=[
         springboot:'2.3.7.RELEASE',
+        mybatisPlus                         : '3.4.3',
+        mysql:"8.0.29",
+        shiro                               : '1.7.1', // Shiro版本编号
+        junit:                              '5.7.1', // 配置JUnit测试工具的版本编号
+        junitPlatformLauncher:              '1.7.1',  // JUnit测试工具运行平台版本编号
+         fastjson: '2.0.14',
+        OKhttp3:'4.9.3'
 ]
 ext.libraries=[
         //以下是springboot的项目所需的核心依赖
         'spring-boot-gradle-plugin': "org.springframework.boot:spring-boot-gradle-plugin:${versions.springboot}",
+        'aop':  "org.springframework.boot:spring-boot-starter-aop:${versions.springboot}",
+        'mysql':"mysql:mysql-connector-java:${versions.mysql}",
+        'mybatisPlus': "com.baomidou:mybatis-plus-boot-starter:${versions.mybatisPlus}",
+        'shiro': "org.apache.shiro:shiro-spring-boot-starter:${versions.shiro}",
+        'ehcahe': "org.apache.shiro:shiro-ehcache:${versions.shiro}",
+        'web':"org.springframework.boot:spring-boot-starter-web:${versions.springboot}",
+        'log': "org.springframework.boot:spring-boot-starter-logging:${versions.springboot}",
+        // 以下的配置为与项目用例测试有关的依赖
+        'junit-jupiter-api': "org.junit.jupiter:junit-jupiter-api:${versions.junit}",
+        'junit-vintage-engine': "org.junit.vintage:junit-vintage-engine:${versions.junit}",
+        'junit-jupiter-engine': "org.junit.jupiter:junit-jupiter-engine:${versions.junit}",
+        'junit-platform-launcher': "org.junit.platform:junit-platform-launcher:${versions.junitPlatformLauncher}",
+        'junit-bom': "org.junit:junit-bom:${versions.junit}",
+        'fastjson':"com.alibaba:fastjson:${versions.fastjson}",
+        'okhttp3':"com.squareup.okhttp3:okhttp:${versions.OKhttp3}"
 ]
+

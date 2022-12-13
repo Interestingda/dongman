@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--MyBatis配置文件-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wuxin.common.domain.mapper.VideoMapper">
+
+
+
+    <insert id="saveVideo" >
+    insert into t_video(type_id,
+    type_name,
+    vod_en,
+    vod_id,
+    vod_name,
+    vod_play_from,
+    vod_remarks,
+    vod_time
+    )values
+    <foreach collection="list" item="item" separator="," >
+
+        (#{item.type_id},
+        #{item.type_name},
+        #{item.vod_en},
+        #{item.vod_id},
+        #{item.vod_name},
+        #{item.vod_play_from},
+        #{item.vod_remarks},
+        #{item.vod_time}
+        )
+    </foreach>
+    </insert>
+
+</mapper>

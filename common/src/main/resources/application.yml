@@ -1,0 +1,9 @@
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.wuxin.common.domain
+  mapper-locations: classpath:com.wuxin.common.domain.mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      table-prefix: t_

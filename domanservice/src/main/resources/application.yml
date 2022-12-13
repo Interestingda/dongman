@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: dongmanservice
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.34.11.13:3306/dongman?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    username: root
+    password: qweasd
+
+  main:
+    allow-bean-definition-overriding: true
+
+
+server:
+  port: 5000
+
+#logging:
+#  level:
+#    root: debug
+
+mybatis-plus:
+  type-aliases-package: com.wuxin.common.domain
+  mapper-locations: classpath*:com.wuxin.common.domain.mapper/*.xml
+  configuration:
+    log-impl:  org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: false  #关闭转驼峰命名下划线
