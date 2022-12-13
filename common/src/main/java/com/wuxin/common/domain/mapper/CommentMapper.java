@@ -5,7 +5,7 @@ import com.wuxin.common.domain.Comment;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/11/2
  */
 @Mapper

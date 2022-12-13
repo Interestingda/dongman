@@ -23,12 +23,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/11/2
  */
 @Service
 @RequiredArgsConstructor
-public class CommentServiceimpl implements CommentService {
+public class CommentServiceImpl implements CommentService {
     private final CommentMapper commentMapper;
     private final UserMapper userMapper;
 
@@ -46,7 +46,7 @@ public class CommentServiceimpl implements CommentService {
         comment.setCreateDate(dateFormat.format(new Date()));
         comment.setParentId(0L);
         comment.setLevel(1);
-        comment.setVodId(Long.valueOf(id));
+        comment.setVodId(id);
         comment.setToUid(0L);
         commentMapper.insert(comment);
         return Result.success(200, "评论成功");
@@ -60,7 +60,7 @@ public class CommentServiceimpl implements CommentService {
     @Override
     public Result show(Long id) {
         LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Comment::getVodId,id);
+        queryWrapper.eq(Comment::getVodId, id);
         queryWrapper.eq(Comment::getLevel, 1);
         List<Comment> list = commentMapper.selectList(queryWrapper);
 
@@ -69,6 +69,12 @@ public class CommentServiceimpl implements CommentService {
 
     }
 
+    /**
+     * 
+     * @param id  传入用户id
+     * @param commentParam 
+     * 
+     */
     @Override
     public Result reply(Long id, CommentParam commentParam) {
         Comment comment = new Comment();
@@ -79,10 +85,10 @@ public class CommentServiceimpl implements CommentService {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         comment.setCreateDate(dateFormat.format(new Date()));
         Comment comment1 = commentMapper.selectById(id);
-        if (comment1.getParentId()==0){
-        comment.setParentId(comment1.getId());
+        if (comment1.getParentId() == 0) {
+            comment.setParentId(comment1.getId());
         }
-        if (comment1.getParentId()!=0){
+        if (comment1.getParentId() != 0) {
             comment.setParentId(comment1.getParentId());
         }
         comment.setLevel(2);
@@ -90,7 +96,7 @@ public class CommentServiceimpl implements CommentService {
 
         comment.setToUid(comment1.getUserId());
         commentMapper.insert(comment);
-        return Result.success(200,"回复成功");
+        return Result.success(200, "回复成功");
     }
 
     /**
@@ -116,7 +122,7 @@ public class CommentServiceimpl implements CommentService {
         commentVo.setBody(comment.getBody());
         commentVo.setAuthor(copyUser(comment.getUserId()));
         //如果是第一层就将第一层评论的id作为参数进行查询第二层相关信息
-        if (1==comment.getLevel()) {
+        if (1 == comment.getLevel()) {
             List<CommentVo> commentVoList = findByParentId(comment.getId());
             if (CollectionUtils.isEmpty(commentVoList)) {
                 commentVo.setReply_list(null);
@@ -124,7 +130,7 @@ public class CommentServiceimpl implements CommentService {
             commentVo.setReply_list(commentVoList);
 
         }
-        if (comment.getLevel()>1) {
+        if (comment.getLevel() > 1) {
             commentVo.setReply_user_name(copyUser(comment.getToUid()).getName());
 
         }
@@ -139,7 +145,7 @@ public class CommentServiceimpl implements CommentService {
      */
     public List<CommentVo> findByParentId(Long id) {
         LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Comment::getParentId,id);
+        queryWrapper.eq(Comment::getParentId, id);
         queryWrapper.eq(Comment::getLevel, 2);
         List<Comment> list = commentMapper.selectList(queryWrapper);
         return copyList(list);
@@ -158,7 +164,6 @@ public class CommentServiceimpl implements CommentService {
         }
         return null;
     }
-
 
 
 }

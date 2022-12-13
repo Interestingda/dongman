@@ -5,8 +5,9 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/17
+ * 加密盐的算法
  */
 @Component
 public class SaltUtils {

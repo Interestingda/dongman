@@ -9,7 +9,7 @@ import net.sf.jsqlparser.statement.alter.ValidateConstraint;
 import static com.baomidou.mybatisplus.annotation.IdType.INPUT;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/24
  */
 @TableName("t_videodetail")

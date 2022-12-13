@@ -5,7 +5,7 @@ import com.wuxin.common.utils.Result;
 import java.util.Map;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/15
  */
 public interface UserService {

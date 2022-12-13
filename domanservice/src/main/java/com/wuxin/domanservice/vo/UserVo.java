@@ -3,7 +3,7 @@ package com.wuxin.domanservice.vo;
 import lombok.Data;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/11/1
  */
 @Data

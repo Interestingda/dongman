@@ -3,7 +3,6 @@ package com.wuxin.domanservice.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wuxin.common.api.CollectService;
-import com.wuxin.common.api.VideoService;
 import com.wuxin.common.domain.Collect;
 import com.wuxin.common.domain.Video;
 import com.wuxin.common.domain.mapper.CollectMapper;
@@ -21,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/11/1
  */
 @Service
@@ -86,7 +85,7 @@ public class CollectServiceImpl implements CollectService {
     }
 
     /**
-     * 返回vo类
+     * 返回视频vo类
      */
     public List<VideoPVo> copylist(List<Video> L) {
         List<VideoPVo> result = new ArrayList<>();

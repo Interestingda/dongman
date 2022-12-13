@@ -23,7 +23,7 @@ import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/20
  */
 @Component

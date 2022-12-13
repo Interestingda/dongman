@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/16
  */
 //    @CrossOrigin(origins = "http://localhost:3000")

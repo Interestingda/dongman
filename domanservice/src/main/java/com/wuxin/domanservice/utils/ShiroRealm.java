@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Map;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/15
  */
 public class ShiroRealm extends AuthenticatingRealm {

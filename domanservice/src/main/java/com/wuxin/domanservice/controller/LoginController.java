@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/15
  */
 
@@ -55,7 +55,7 @@ public class LoginController {
         return userLogin.userDetail();
     }
     /**
-     *
+     *  用户登出
      */
     @RequestMapping("loginOut")
     public Result logout(){

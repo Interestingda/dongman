@@ -6,8 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Atothor:aa
+ * Author:TangHong
  * data:2022/10/13
+ *  返回前端的结果json模板
  */
 @NoArgsConstructor
 public class Result {
