@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.service;
+package com.wuxin.core.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.wuxin.common.api.UserService;
@@ -6,7 +6,6 @@ import com.wuxin.common.domain.User;
 import com.wuxin.common.domain.mapper.UserMapper;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -29,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
         LambdaQueryWrapper<User> aa = new LambdaQueryWrapper<>();
 
-            aa.select(User::getId,User::getUserName,User::getPassword,User::getSalt);
+        aa.select(User::getId,User::getUserName,User::getPassword,User::getSalt);
         aa.eq(User::getUserName, username);
 
         List<Map<String, Object>> collect = userMapper.selectMaps(aa);

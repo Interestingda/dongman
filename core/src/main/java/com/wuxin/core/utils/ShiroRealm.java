@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.utils;
+package com.wuxin.core.utils;
 
 import com.wuxin.common.api.UserService;
 import org.apache.shiro.authc.*;

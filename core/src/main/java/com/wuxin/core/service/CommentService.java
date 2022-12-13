@@ -1,7 +1,7 @@
-package com.wuxin.domanservice.api;
+package com.wuxin.core.api;
 
 import com.wuxin.common.utils.Result;
-import com.wuxin.domanservice.vo.CommentParam;
+import com.wuxin.core.vo.CommentParam;
 
 /**
  * Atothor:aa

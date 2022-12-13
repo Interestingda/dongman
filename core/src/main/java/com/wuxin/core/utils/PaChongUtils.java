@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.utils;
+package com.wuxin.core.utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -6,7 +6,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.wuxin.common.domain.Video;
 import com.wuxin.common.domain.mapper.VideoMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;

@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.service;
+package com.wuxin.core.service;
 
 import com.wuxin.common.api.UserLogin;
 
@@ -6,8 +6,8 @@ import com.wuxin.common.domain.User;
 import com.wuxin.common.domain.mapper.UserMapper;
 import com.wuxin.common.utils.Result;
 import com.wuxin.common.vo.LoginUser;
-import com.wuxin.domanservice.utils.SaltUtils;
-import com.wuxin.domanservice.vo.UserVo;
+import com.wuxin.core.utils.SaltUtils;
+import com.wuxin.core.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 
 import org.apache.shiro.SecurityUtils;

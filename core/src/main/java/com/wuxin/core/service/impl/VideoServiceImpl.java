@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.service;
+package com.wuxin.core.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 
@@ -6,11 +6,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wuxin.common.api.VideoService;
 import com.wuxin.common.domain.Video;
 
-import com.wuxin.common.domain.mapper.VideoDetailMapper;
 import com.wuxin.common.domain.mapper.VideoMapper;
 import com.wuxin.common.utils.Result;
 import com.wuxin.common.vo.VideoVo;
-import com.wuxin.domanservice.vo.VideoPVo;
+import com.wuxin.core.vo.VideoPVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -65,7 +64,7 @@ public class VideoServiceImpl implements VideoService {
         Page<Video> page = new Page<>(videoVo.getPage(),videoVo.getLimit());
 
         LambdaQueryWrapper<Video> wrapper = new LambdaQueryWrapper<>();
-          wrapper.select(Video::getVod_id,Video::getVod_name,Video::getVod_pic,Video::getVod_remarks);
+        wrapper.select(Video::getVod_id,Video::getVod_name,Video::getVod_pic,Video::getVod_remarks);
         wrapper.eq(!StringUtils.isEmpty(videoVo.getMovtype())&&videoVo.getMovtype()>0,Video::getType_id,videoVo.getMovtype());
         wrapper.eq(!StringUtils.isEmpty(videoVo.getVod_class()),Video::getVod_class,videoVo.getVod_class());
         wrapper.like(!StringUtils.isEmpty(videoVo.getVod_area()),Video::getVod_area,videoVo.getVod_area());

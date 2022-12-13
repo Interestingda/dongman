@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.service;
+package com.wuxin.core.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wuxin.common.api.VideoDetailService;

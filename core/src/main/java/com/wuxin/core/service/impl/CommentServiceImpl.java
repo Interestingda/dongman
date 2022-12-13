@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.service;
+package com.wuxin.core.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.wuxin.common.domain.Comment;
@@ -6,10 +6,10 @@ import com.wuxin.common.domain.User;
 import com.wuxin.common.domain.mapper.CommentMapper;
 import com.wuxin.common.domain.mapper.UserMapper;
 import com.wuxin.common.utils.Result;
-import com.wuxin.domanservice.api.CommentService;
-import com.wuxin.domanservice.vo.CommentParam;
-import com.wuxin.domanservice.vo.CommentVo;
-import com.wuxin.domanservice.vo.UserVo;
+import com.wuxin.core.api.CommentService;
+import com.wuxin.core.vo.CommentParam;
+import com.wuxin.core.vo.CommentVo;
+import com.wuxin.core.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
