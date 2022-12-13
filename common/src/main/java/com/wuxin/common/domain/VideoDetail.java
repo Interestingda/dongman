@@ -9,19 +9,21 @@ import net.sf.jsqlparser.statement.alter.ValidateConstraint;
 import static com.baomidou.mybatisplus.annotation.IdType.INPUT;
 
 /**
+ * 视频详细信息实体
  * Author:TangHong
  * data:2022/10/24
  */
 @TableName("t_videodetail")
 public class VideoDetail {
 
-
+    @TableField(value = "vod_pic")
     private String vod_pic;
-   @TableField(value = "vod_id")
-   @TableId(type = INPUT)
+
+    @TableId(type = INPUT)
+    @TableField(value = "vod_id")
     private Long vod_id;
 
-    @TableField(value ="detailInfo")
+    @TableField(value = "detail_info")
     private String detailInfo;
 
 

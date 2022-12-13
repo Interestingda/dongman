@@ -10,11 +10,35 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class VideoVo {
-   private Integer page;
-   private Integer limit=12;
+    /**
+     * 页数
+     */
+    private Integer page;
+
+    /**
+     * 条数
+     */
+    private Integer limit = 12;
+
+    /**
+     * 视频类型
+     */
     private int movtype;
+
+    /**
+     * 关键字
+     */
     private String keyword;
+
+    /**
+     * 地区
+     */
     private String vod_area;
+
     private String vod_class;
+
+    /**
+     * 年限
+     */
     private Integer vod_year;
 }

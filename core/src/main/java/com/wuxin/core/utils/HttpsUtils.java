@@ -39,9 +39,6 @@ public class HttpsUtils {
 
         CloseableHttpResponse execute = httpclient.execute(httpGet);
         HttpEntity entity = execute.getEntity();
-        String content = EntityUtils.toString(entity, "utf-8");
-
-        return content;
-
+        return  EntityUtils.toString(entity, "utf-8");
     }
 }

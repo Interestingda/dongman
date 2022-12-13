@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 
 /**
+ * 用户实体
  * Author:TangHong
  * data:2022/10/14
  */
@@ -19,12 +20,27 @@ import lombok.NoArgsConstructor;
 @TableName(value="t_user")
 public class User {
 
+    /**
+     * id
+     */
     @TableId(value = "UserId",type = IdType.AUTO)
     private Long id;
+
+    /**
+     * 用户名称
+     */
     @TableField(value = "userName")
     private  String userName;
+
+    /**
+     * 密码
+     */
     @TableField(value = "userPassword")
     private  String password;
+
+    /**
+     * 加密盐
+     */
     @TableField(value ="salt")
     private String salt;
     

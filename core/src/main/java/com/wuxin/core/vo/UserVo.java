@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.vo;
+package com.wuxin.core.vo;
 
 import lombok.Data;
 
@@ -8,6 +8,12 @@ import lombok.Data;
  */
 @Data
 public class UserVo {
+
     private Long id;
+
     private String name;
+
+    private Long createTime;
+
+    private String info;
 }

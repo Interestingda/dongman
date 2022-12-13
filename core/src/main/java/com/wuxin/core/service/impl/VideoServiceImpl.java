@@ -10,7 +10,6 @@ import com.wuxin.common.domain.mapper.VideoMapper;
 import com.wuxin.common.utils.Result;
 import com.wuxin.common.vo.VideoVo;
 import com.wuxin.core.common.ServiceCommon;
-import com.wuxin.core.vo.VideoPVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 
 import java.util.List;
 

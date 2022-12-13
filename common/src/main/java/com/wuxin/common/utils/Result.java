@@ -1,20 +1,33 @@
 package com.wuxin.common.utils;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 /**
+ * 返回前端的结果json模板
  * Author:TangHong
  * data:2022/10/13
- *  返回前端的结果json模板
  */
 @NoArgsConstructor
 public class Result {
+
+    /**
+     * 状态
+     */
     private Integer code;
+
+    /**
+     * token
+     */
     private String token;
+
+    /**
+     * 数据
+     */
     private Object data;
+
+    /**
+     * 错误信息
+     */
     private String message;
 
     public Result(Object data) {
@@ -94,5 +107,15 @@ public class Result {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "code=" + code +
+                ", token='" + token + '\'' +
+                ", data=" + data +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

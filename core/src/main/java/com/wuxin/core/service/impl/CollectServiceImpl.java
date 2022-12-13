@@ -9,7 +9,6 @@ import com.wuxin.common.domain.mapper.CollectMapper;
 import com.wuxin.common.domain.mapper.VideoMapper;
 import com.wuxin.common.utils.Result;
 import com.wuxin.core.common.ServiceCommon;
-import com.wuxin.core.vo.VideoPVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;

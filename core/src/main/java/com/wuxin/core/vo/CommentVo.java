@@ -23,4 +23,5 @@ public class CommentVo {
     private Integer level;
 
     private String reply_user_name;
+
 }

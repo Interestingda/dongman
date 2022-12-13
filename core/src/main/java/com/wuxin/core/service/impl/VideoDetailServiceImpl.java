@@ -34,9 +34,9 @@ public class VideoDetailServiceImpl implements VideoDetailService {
             String detail = videoDetail.getDetailInfo();
             System.out.println(detail);
             JSONObject parse = JSONObject.parseObject(detail);
-            String playurl = parse.getString("vod_play_url");
+            String playUrl = parse.getString("vod_play_url");
 
-            String[] sp = playurl.split("#");
+            String[] sp = playUrl.split("#");
             Map<String, String> map = new LinkedHashMap<>();
             for (String s : sp) {
                 String[] spl = s.split("\\$");

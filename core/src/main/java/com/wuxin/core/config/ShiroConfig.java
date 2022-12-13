@@ -108,8 +108,7 @@ public class ShiroConfig {
     }
 
     /**
-     *  会话管理器
-     *
+     * 会话管理器
      */
     @Bean("sessionManager")
     public SessionManager sessionManager() {

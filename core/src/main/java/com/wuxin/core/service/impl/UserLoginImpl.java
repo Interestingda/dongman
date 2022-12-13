@@ -98,8 +98,6 @@ public class UserLoginImpl implements UserLogin {
     public Result userDetail() {
         Subject subject = SecurityUtils.getSubject();
         Map<String, Object> userInfo = (Map<String, Object>) subject.getPrincipal();
-
-
         if (userInfo != null) {
             UserVo userVo = new UserVo();
             Object id = userInfo.get("id");

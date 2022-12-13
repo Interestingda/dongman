@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("apis")
 @RequiredArgsConstructor
 public class VideoController {
+
     private final VideoService videoService;
+
     private final VideoDetailService videoDetailService;
 
     /**

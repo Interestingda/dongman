@@ -1,4 +1,4 @@
-package com.wuxin.domanservice.vo;
+package com.wuxin.core.vo;
 
 import lombok.Data;
 
@@ -8,6 +8,9 @@ import lombok.Data;
  */
 @Data
 public class CommentParam {
+
     private String body;
+
     private Long user_id;
+
 }
